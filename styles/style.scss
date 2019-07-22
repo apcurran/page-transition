@@ -1,0 +1,153 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+$light-green: #00ff73;
+$alt-ease: cubic-bezier(.19,.63,.55,1);
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    font-family: sans-serif;
+}
+
+.nav {
+    margin: 3rem;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &-img {
+        width: 40px;
+        cursor: pointer;
+    }
+}
+
+.header-sidebar {
+    position: absolute;
+    min-height: 110vh;
+    z-index: 5;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 250px;
+
+    background-color: #222;
+    perspective: 1000px;
+    transform-origin: right;
+    // transform: rotateY(90deg);
+
+    &-list {
+        display: flex;
+        flex-direction: column;
+        list-style-type: none;
+    }
+
+    &-item {
+        width: 100%;
+        text-align: center;
+
+        &:hover {
+            background-color: #555;
+        }
+
+
+        &-link {
+            display: block; // For the links to allow the following properties to take effect.
+            padding-top: 2em;
+            padding-bottom: 2em;
+
+            color: #fff;
+            text-decoration: none;
+        }
+    }
+}
+
+.main {
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &-hero {
+        position: relative;
+        width: 100%;
+        height: 60%;
+        will-change: height, width;
+
+        animation: expandHeight 1s 0s ease forwards,
+                   shrinkWidth 1s 1s ease forwards;
+
+        @keyframes expandHeight {
+            from {
+                height: 0%;
+            }
+
+            to {
+                height: 60%;
+            }
+        }
+
+        @keyframes shrinkWidth {
+            from {
+                width: 100%;
+            }
+
+            to {
+                width: 75%;
+            }
+        }
+
+        &-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(.8);
+        }
+    }
+
+    &-hero-title {
+        top: 75%;
+        left: 10%;
+        position: absolute;
+
+        font-size: calc(.9rem + 4vw);
+        color: #fff;
+    }
+}
+
+
+.slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 110vh;
+    transform: translateX(-100%);
+    background: linear-gradient(to right, #ffb06f, #b47349);
+    z-index: -1;
+
+    animation: slideIn 1.1s $alt-ease forwards;
+    animation-delay: 1.1s;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+.footer {
+    margin-top: auto;
+}
