@@ -7,13 +7,8 @@
 $light-green: #00ff73;
 $alt-ease: cubic-bezier(.19,.63,.55,1);
 
-html {
-    height: 100%;
-}
-
 body {
-    min-height: 100vh;
-    font-family: sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .nav {
@@ -23,6 +18,10 @@ body {
     justify-content: space-between;
     align-items: center;
 
+    &-logo {
+        letter-spacing: 3px;
+    }
+
     &-img {
         width: 40px;
         cursor: pointer;
@@ -30,43 +29,49 @@ body {
 }
 
 .header-sidebar {
+    transform: perspective(1000px) rotateY(-90deg);
+    height: 90vh;
     position: absolute;
-    min-height: 110vh;
     z-index: 5;
-    top: 0;
     bottom: 0;
     right: 0;
-    width: 250px;
+    width: 275px;
 
-    background-color: #222;
-    perspective: 1000px;
+    background-color: rgb(34, 34, 34, .9);
     transform-origin: right;
-    // transform: rotateY(90deg);
+    transition: transform 400ms $alt-ease;
 
     &-list {
+        width: 100%;
+        height: 100%;
         display: flex;
         flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
         list-style-type: none;
+
+
     }
 
     &-item {
         width: 100%;
         text-align: center;
 
-        &:hover {
-            background-color: #555;
-        }
-
-
         &-link {
-            display: block; // For the links to allow the following properties to take effect.
-            padding-top: 2em;
-            padding-bottom: 2em;
-
+            font-size: 1.1rem;
+            letter-spacing: 3px;
             color: #fff;
             text-decoration: none;
+
+            strong {
+                color: #aaa;
+            }
         }
     }
+}
+
+.header-sidebar.active {
+    transform: perspective(0) rotateY(0);
 }
 
 .main {
@@ -114,7 +119,7 @@ body {
     }
 
     &-hero-title {
-        top: 75%;
+        top: 65%;
         left: 10%;
         position: absolute;
 
@@ -123,13 +128,23 @@ body {
     }
 }
 
+.footer {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &-para {
+        text-align: center;
+    }
+}
 
 .slider {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    min-height: 110vh;
+    min-height: 100vh;
     transform: translateX(-100%);
     background: linear-gradient(to right, #ffb06f, #b47349);
     z-index: -1;
@@ -146,8 +161,4 @@ body {
     to {
         transform: translateX(0);
     }
-}
-
-.footer {
-    margin-top: auto;
 }
