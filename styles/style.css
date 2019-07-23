@@ -25,7 +25,7 @@ body {
 
 .header-sidebar {
   transform: perspective(1000px) rotateY(-90deg);
-  height: 90vh;
+  height: 85vh;
   position: absolute;
   z-index: 5;
   bottom: 0;
